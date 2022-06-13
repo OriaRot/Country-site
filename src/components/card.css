@@ -1,0 +1,33 @@
+.country-list{
+    display: grid;
+    margin: 20px;
+    grid-template-columns: repeat(5, 230px);
+    text-align: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.country-card{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    border-radius: 40%;
+    cursor: pointer;
+}
+
+.country-card:hover{
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.card-img{
+    border: 1px black solid;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.country-content{
+    background-color: darkgray;
+}
+
+.continent{
+    background-color: lightgray;
+}

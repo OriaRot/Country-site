@@ -1,0 +1,40 @@
+header{
+    display: inline-flex;
+    margin-top: 40px;
+}
+
+.searchinput{
+    margin-left: 200px;
+    margin-top: 40px;
+    min-width: 300px;
+    height: 25px;
+    border-radius: 10px;
+    padding: 2px 3px;
+}
+
+.headertag{
+    margin-left: 250px;
+}
+
+.cnt{
+    color: red;
+    margin-left: 20px;
+}
+
+.full-list{
+    margin-left: 50px;
+}
+
+.btn{
+    border: none;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 20pxכ;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: lightblue;
+    color: rgb(124, 34, 34);
+}

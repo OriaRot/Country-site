@@ -1,23 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./App.css";
+import Layout from "./components/Layout";
+import Main from "./components/Main";
 
 function App() {
+  const [list, setList] = useState([]);
+  const [searchList, setSearchList] = useState(list);
+  const [cnt, setCnt] = useState(0);
+  const [input, setInput] = useState("");
+  const clickToSearch = () => {
+    if (input === "") {
+      setSearchList(list);
+      console.log(list);
+      return;
+    }
+    setSearchList(
+      list.filter((i) =>
+        i.name.common.toLocaleLowerCase().startsWith(input.toLocaleLowerCase())
+      )
+    );
+  };
+
+  const getInfo = (e) => {
+    setInput(e.target.value);
+    if (e.target.value === "") {
+      setSearchList(list);
+    }
+  };
+
+  useEffect(() => {
+    setCnt(searchList.length);
+  }, [searchList]);
+
+  useEffect(() => {
+    setSearchList(list);
+  }, [list]);
+
+  useEffect(() => {
+    getCountries();
+    console.log(list);
+  }, []);
+  function getCountries() {
+    axios.get("https://restcountries.com/v3.1/all").then((result) => {
+      setList(result.data);
+      console.log(result.data);
+    });
+  }
+  if (list.length === 0) {
+    return <h1 className="load">Loading...</h1>;
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Layout data={list} click={clickToSearch} change={getInfo} cnt={cnt} />
+      <Main data={searchList} />
     </div>
   );
 }
